@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour {
 	bool doubleJumped = false;
 	private float jumpTimer = 0.0f;
 	Vector2 orignalPlace;
+	public float touchDelay = 1.0f;
+	public int tapCount = 1;
+
+
+	public float doubleTapDelay = 0.1f;
+	int count = 0;
+	
 
 	void Start()
 	{
@@ -46,7 +53,29 @@ public class PlayerController : MonoBehaviour {
 
 			}
 		}
-	
+			if(Input.touchCount == 1)
+			{
+				float t = 0.0f;
+				while(t < doubleTapDelay)
+				{
+					t += Time.deltaTime;
+					if(Input.touchCount == 1)
+					{
+					Debug.Log("Double");
+					}
+				}
+			}
+		if(Input.touchCount == 2)
+		{
+			StartCoroutine(Teleport());
+		}
+	}
+
+	IEnumerator Teleport()
+	{
+		Debug.Log("Beging");
+		yield return new WaitForSeconds(1);
+		Debug.Log("Ending");
 	}
 
 	void OnTriggerEnter2D (Collider2D other)
