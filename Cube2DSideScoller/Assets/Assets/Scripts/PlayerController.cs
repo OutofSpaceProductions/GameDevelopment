@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 
 		jumpTimer += Time.deltaTime;
 
-		if(Input.GetMouseButton(0))
+		if(Input.touchCount == 1)
 		{
 			if(grounded)
 			{
