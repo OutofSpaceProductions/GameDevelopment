@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 				AbleToJump = 0;
 			}
 		}
+		Debug.Log(AbleToJump);
 
 
 	}
