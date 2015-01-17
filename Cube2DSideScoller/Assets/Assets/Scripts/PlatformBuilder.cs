@@ -13,6 +13,7 @@ public class PlatformBuilder : MonoBehaviour {
 	{
 		InvokeRepeating("ShortPlatformBuild", delay, delay);
 	}
+
 		void ShortPlatformBuild () 
 	{
 		index = Random.Range (0, PlatFormPoints.Length);
