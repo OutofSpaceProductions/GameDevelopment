@@ -13,30 +13,31 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
 	{
 		grounded = Physics2D.OverlapCircle(GroundCheck.transform.position, GroundCheckRadius, WhatIsGround);
-		Debug.Log(grounded);
+	
+		if(Input.GetMouseButton(0))
+		{
+			if(grounded)
+			{
+				rigidbody2D.AddForce(new Vector2(0, jumpForce));
+				AbleToJump = 1;
+				Debug.Log("Jump 1");
+			}
+			else if(Input.GetMouseButtonDown(0))
+			{
+				if (AbleToJump == 1)
+				{
+					float newJumpForce = jumpForce * 2;
+					rigidbody2D.AddForce(new Vector2(0, newJumpForce));
+					AbleToJump = 0;
+					Debug.Log("Jump 2");
+				}
+			}
+		}
 		if(grounded)
 		{
 			AbleToJump = 2;
 		}
 
-		if(Input.GetMouseButtonDown(0) && grounded)
-		{
-			if(AbleToJump == 2)
-			{
-				rigidbody2D.AddForce(new Vector2(0, jumpForce));
-				AbleToJump = 1;
-			}
-		}
-		if(Input.GetMouseButtonDown(0) && grounded == false)
-		{
-			if (AbleToJump == 1)
-			{
-				float newJumpForce = jumpForce * 2;
-				rigidbody2D.AddForce(new Vector2(0, newJumpForce));
-				AbleToJump = 0;
-			}
-		}
-		Debug.Log(AbleToJump);
 
 
 	}
