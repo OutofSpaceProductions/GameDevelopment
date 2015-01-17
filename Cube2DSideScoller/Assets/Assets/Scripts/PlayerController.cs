@@ -7,39 +7,47 @@ public class PlayerController : MonoBehaviour {
 	public LayerMask WhatIsGround;
 	public Transform GroundCheck;
 	public float GroundCheckRadius;
+	public float minJumpTime = 1f;
 	bool grounded = false;
-	int AbleToJump = 2;
+	bool doubleJumped = false;
+	private float jumpTimer = 0.0f;
 	// Update is called once per frame
 	void Update () 
 	{
 		grounded = Physics2D.OverlapCircle(GroundCheck.transform.position, GroundCheckRadius, WhatIsGround);
-	
+		if(grounded)
+		{
+			doubleJumped = false;
+		}
+
+		jumpTimer += Time.deltaTime;
+
 		if(Input.GetMouseButton(0))
 		{
 			if(grounded)
 			{
 				rigidbody2D.AddForce(new Vector2(0, jumpForce));
-				AbleToJump = 1;
-				Debug.Log("Jump 1");
+				doubleJumped = false;
+				Debug.Log("Jump1");
+				jumpTimer = 0.0f;
 			}
-			else if(Input.GetMouseButtonDown(0))
+			else if (!doubleJumped && jumpTimer > minJumpTime)
 			{
-				if (AbleToJump == 1)
-				{
-					float newJumpForce = jumpForce * 2;
-					rigidbody2D.AddForce(new Vector2(0, newJumpForce));
-					AbleToJump = 0;
-					Debug.Log("Jump 2");
-				}
+				rigidbody2D.AddForce(new Vector2(0, jumpForce * 5));
+				doubleJumped = true;
+				Debug.Log("Jump2");
+
 			}
 		}
-		if(grounded)
+	
+	}
+
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		if(other.gameObject.tag == "Destroy")
 		{
-			AbleToJump = 2;
+			Application.LoadLevel(Application.loadedLevel);
 		}
-
-
-
 	}
 
 }

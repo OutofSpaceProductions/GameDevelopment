@@ -49,6 +49,7 @@
      <Compile Include="Assets\Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Assets\Scripts\PlatformBuilder.cs" />
      <Compile Include="Assets\Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Assets\Scripts\lookAt.cs" />
      <Compile Include="Assets\Assets\Scripts\moveToGameSpeed.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />

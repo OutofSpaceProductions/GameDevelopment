@@ -3,23 +3,20 @@ using System.Collections;
 
 public class PlatformBuilder : MonoBehaviour {
 
-	public GameObject Platform;
+	public GameObject ShortPlatform;
 	public GameObject[] PlatFormPoints;
 	GameObject currentPoint;
 	int index;
 	public float delay = 1.0f;
 
-	// Use this for initialization
 	void Start () 
 	{
-		InvokeRepeating("PlatformBuild", delay, delay);
+		InvokeRepeating("ShortPlatformBuild", delay, delay);
 	}
-	
-	// Update is called once per frame
-	void PlatformBuild () 
+		void ShortPlatformBuild () 
 	{
 		index = Random.Range (0, PlatFormPoints.Length);
 		currentPoint = PlatFormPoints[index];
-		Instantiate(Platform, PlatFormPoints[index].transform.position , Quaternion.identity);
+		Instantiate(ShortPlatform, PlatFormPoints[index].transform.position , Quaternion.identity);
 	}
 }
