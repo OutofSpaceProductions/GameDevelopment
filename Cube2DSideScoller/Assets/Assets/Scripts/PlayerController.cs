@@ -11,9 +11,16 @@ public class PlayerController : MonoBehaviour {
 	bool grounded = false;
 	bool doubleJumped = false;
 	private float jumpTimer = 0.0f;
-	// Update is called once per frame
+	Vector2 orignalPlace;
+
+	void Start()
+	{
+		orignalPlace = transform.position;
+	}
+
 	void Update () 
 	{
+		transform.position = new Vector2(orignalPlace.x, transform.position.y);
 		grounded = Physics2D.OverlapCircle(GroundCheck.transform.position, GroundCheckRadius, WhatIsGround);
 		if(grounded)
 		{
