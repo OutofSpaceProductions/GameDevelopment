@@ -12,12 +12,9 @@ public class PlayerController : MonoBehaviour {
 	bool doubleJumped = false;
 	private float jumpTimer = 0.0f;
 	Vector2 orignalPlace;
-	public float touchDelay = 1.0f;
-	public int tapCount = 1;
-
-
-	public float doubleTapDelay = 0.1f;
-	int count = 0;
+	public GameObject Bullet;
+	public float DoubleTouchDelay = 1.0f;
+	float lastTap = 0.0f;
 	
 
 	void Start()
@@ -38,8 +35,9 @@ public class PlayerController : MonoBehaviour {
 
 		if(Input.touchCount == 1)
 		{
-			if(grounded)
+		 	if(grounded)
 			{
+				lastTap = 0.0f;
 				rigidbody2D.AddForce(new Vector2(0, jumpForce));
 				doubleJumped = false;
 				Debug.Log("Jump1");
@@ -53,27 +51,20 @@ public class PlayerController : MonoBehaviour {
 
 			}
 		}
-			if(Input.touchCount == 1)
-			{
-				float t = 0.0f;
-				while(t < doubleTapDelay)
-				{
-					t += Time.deltaTime;
-					if(Input.touchCount == 1)
-					{
-					Debug.Log("Double");
-					}
-				}
-			}
 		if(Input.touchCount == 2)
 		{
 			StartCoroutine(Teleport());
 		}
 	}
 
+	void Shoot()
+	{
+
+	}
+
 	IEnumerator Teleport()
 	{
-		Debug.Log("Beging");
+		Instantiate(Bullet, transform.position, transform.rotation);
 		yield return new WaitForSeconds(1);
 		Debug.Log("Ending");
 	}
