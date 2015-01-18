@@ -18,6 +18,6 @@ public class PlatformBuilder : MonoBehaviour {
 	{
 		index = Random.Range (0, PlatFormPoints.Length);
 		currentPoint = PlatFormPoints[index];
-		Instantiate(ShortPlatform, PlatFormPoints[index].transform.position , Quaternion.identity);
+		Instantiate(ShortPlatform, PlatFormPoints[2].transform.position , Quaternion.identity);
 	}
 }
