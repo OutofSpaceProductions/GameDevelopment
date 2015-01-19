@@ -10,7 +10,7 @@ public class ConstantForce : MonoBehaviour {
 	{
 		if(XForce == true)
 		{
-			transform.position += new Vector3(force * Time.deltaTime, 0, 0);
+			transform.Translate(Vector3.right * force * Time.deltaTime);
 		}
 		else
 		{

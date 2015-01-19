@@ -17,10 +17,12 @@ public class PlayerController : MonoBehaviour {
 	public float FireDelay = 1.0f;
 	float lastTap = 0.0f;
 	
-
+	GameManager gameManager;
 	void Start()
 	{
 		orignalPlace = transform.position;
+		GameObject gameManagerScript = GameObject.FindGameObjectWithTag("GameController");
+		gameManager = gameManagerScript.GetComponent<GameManager>();
 	}
 
 	void Update () 
@@ -41,15 +43,12 @@ public class PlayerController : MonoBehaviour {
 				lastTap = 0.0f;
 				rigidbody2D.AddForce(new Vector2(0, jumpForce));
 				doubleJumped = false;
-				Debug.Log("Jump1");
 				jumpTimer = 0.0f;
 			}
 			else if (!doubleJumped && jumpTimer > minJumpTime)
 			{
 				rigidbody2D.AddForce(new Vector2(0, jumpForce * 5));
 				doubleJumped = true;
-				Debug.Log("Jump2");
-
 			}
 		}
 		lastTap += Time.deltaTime;
@@ -76,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if(other.gameObject.tag == "Destroy")
 		{
-			Application.LoadLevel(Application.loadedLevel);
+			gameManager.Dead();
 		}
 	}
 

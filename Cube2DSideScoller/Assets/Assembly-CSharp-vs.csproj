@@ -46,15 +46,25 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\3rd Party\BezierCurve\Bezier\CubicBezierChain.cs" />
+     <Compile Include="Assets\3rd Party\BezierCurve\Bezier\QuadraticBezierChain.cs" />
+     <Compile Include="Assets\3rd Party\BezierCurve\Example\CubicBezierBlaster.cs" />
+     <Compile Include="Assets\3rd Party\BezierCurve\Example\LineEffects.cs" />
+     <Compile Include="Assets\3rd Party\BezierCurve\Example\PlayerControls.cs" />
+     <Compile Include="Assets\3rd Party\BezierCurve\Example\QuadraticBezierBlaster.cs" />
+     <Compile Include="Assets\3rd Party\BezierCurve\Example\SimplePatrol.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ConstantForce.cs" />
      <Compile Include="Assets\Scripts\Destroy.cs" />
      <Compile Include="Assets\Scripts\EnemyBuilder.cs" />
+     <Compile Include="Assets\Scripts\EnemyCollision.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\HealthTracker.cs" />
      <Compile Include="Assets\Scripts\PlatformBuilder.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\moveToGameSpeed.cs" />
      <Compile Include="Assets\Scripts\onBulletCollision.cs" />
+     <Compile Include="Assets\Scripts\titleScreenGameManager.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
@@ -64,6 +74,7 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
+     <None Include="Assets\3rd Party\BezierCurve\Bezier\Instructions.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

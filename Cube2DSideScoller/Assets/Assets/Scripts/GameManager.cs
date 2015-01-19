@@ -9,7 +9,15 @@ public class GameManager : MonoBehaviour {
 	public Text scoreText;
 	private float floatScore;
 	private int Score;
-	
+	private int health = 100;
+	public int MinorDamage = 1;  
+	public Slider healthSlider;
+	public Slider powerUpSlider;
+	public int KillEnemyValue = 5;
+	private int PowerUpScore = 0;
+	bool powerUpAvaible = false;
+
+
 	// Update is called once per frame
 	void Awake () 
 	{
@@ -19,11 +27,39 @@ public class GameManager : MonoBehaviour {
 	void Update()
 	{
 		AddScore(1);
+		//if(powerUpAvaible == true && Input.
+		if(health == 0)
+		{
+			Debug.Log("Dead");
+			Dead();
+		}
 	}
-	void AddScore(int PointValue)
+	public void AddScore(int PointValue)
 	{
 		floatScore += Time.deltaTime;
 		Score = (int)floatScore;
 		scoreText.text = ("Score:" + Score);
+	}
+	public void DestroyedEnemy(int PointValue)
+	{
+		AddScore(KillEnemyValue);
+		PowerUpScore += 1;
+		powerUpSlider.value = PowerUpScore;
+		if(powerUpSlider.value == powerUpSlider.maxValue)
+		{
+			powerUpAvaible = true;
+			powerUpSlider.maxValue = powerUpSlider.maxValue * 2;
+			powerUpSlider.value = 0;
+		}
+	}
+	public void Health(int Damage)
+	{
+		health -= Damage;
+		healthSlider.value = health;
+
+	}
+	public void Dead()
+	{
+		Application.LoadLevel (Application.loadedLevel);
 	}
 }
