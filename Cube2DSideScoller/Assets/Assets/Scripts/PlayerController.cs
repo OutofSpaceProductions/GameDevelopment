@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour {
 	private float jumpTimer = 0.0f;
 	Vector2 orignalPlace;
 	public GameObject Bullet;
-	public float DoubleTouchDelay = 1.0f;
+
+	public float FireDelay = 1.0f;
 	float lastTap = 0.0f;
 	
 
@@ -51,15 +52,18 @@ public class PlayerController : MonoBehaviour {
 
 			}
 		}
-		if(Input.touchCount == 2)
+		lastTap += Time.deltaTime;
+		Debug.Log(lastTap);
+		if(Input.touchCount == 2 && lastTap > FireDelay)
 		{
-			StartCoroutine(Teleport());
+			lastTap = 0;
+			Shoot();
 		}
 	}
 
 	void Shoot()
 	{
-
+		Instantiate(Bullet, transform.position, Bullet.transform.rotation);
 	}
 
 	IEnumerator Teleport()

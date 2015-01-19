@@ -4,6 +4,9 @@ using System.Collections;
 public class moveToGameSpeed : MonoBehaviour {
 
 	GameManager gameManager;
+	public bool fadeAway = false;
+	public float fadeAwayTime = 1;
+
 
 
 	// Use this for initialization
@@ -11,6 +14,10 @@ public class moveToGameSpeed : MonoBehaviour {
 	{
 		GameObject gameManagerScript = GameObject.FindGameObjectWithTag("GameController");
 		gameManager = gameManagerScript.GetComponent<GameManager>();
+		if(fadeAway == true)
+		{
+			StartCoroutine(FadeAway(fadeAwayTime));
+		}
 	}
 	
 	// Update is called once per frame
@@ -24,5 +31,11 @@ public class moveToGameSpeed : MonoBehaviour {
 		{
 			Destroy(this.gameObject);
 		}
+	}
+
+	IEnumerator FadeAway(float delay)
+	{
+		yield return new WaitForSeconds(1);
+		Sprite.renderer.material.color.a = Mathf.Lerp(Sprite.renderer.material.color.a,0,Time.deltaTime * delay);
 	}
 }
