@@ -16,14 +16,14 @@ public class moveToGameSpeed : MonoBehaviour {
 		gameManager = gameManagerScript.GetComponent<GameManager>();
 		if(fadeAway == true)
 		{
-			StartCoroutine(FadeAway(fadeAwayTime));
+			FadeAway();
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		transform.position += new Vector3(gameManager.AverageSpeed,0f, 0f) * Time.deltaTime;
+		//transform.position += new Vector3(gameManager.AverageSpeed,0f, 0f) * Time.deltaTime;
 	}
 	void OnTriggerEnter2D (Collider2D other)
 	{
@@ -33,9 +33,9 @@ public class moveToGameSpeed : MonoBehaviour {
 		}
 	}
 
-	IEnumerator FadeAway(float delay)
+	void FadeAway()
 	{
-		yield return new WaitForSeconds(1);
-		Sprite.renderer.material.color.a = Mathf.Lerp(Sprite.renderer.material.color.a,0,Time.deltaTime * delay);
+		GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.black, fadeAwayTime * Time.deltaTime);
+		Debug.Log("fade");
 	}
 }

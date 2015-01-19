@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		lastTap += Time.deltaTime;
-		Debug.Log(lastTap);
 		if(Input.touchCount == 2 && lastTap > FireDelay)
 		{
 			lastTap = 0;
